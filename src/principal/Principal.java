@@ -79,12 +79,20 @@ public class Principal {
 		//Arrays.sort(datos);
 		String[] cadenas =  {"perro","gato","alce"};
 		//practicas.ordenaCadenas(cadenas);
-		Estudiante estudiante1 = new Estudiante(111, "44599999G","Carlos", 'M', LocalDate.now(), 187, null, null);
-		Estudiante estudiante2 = new Estudiante(111, "44556677G","Marcos", 'M', LocalDate.now(), 187, null, null);
-		Estudiante estudiante3 = new Estudiante(111, "44556677G","Lorcas", 'M', LocalDate.now(), 187, null, null);
-		Estudiante[] estudiantesLista = {estudiante1, estudiante2, estudiante3};
-		practicas.ordenaEstudiantes(estudiantesLista);
+//		Estudiante estudiante1 = new Estudiante(111, "44599999G","Carlos", 'M', LocalDate.now(), 187, null, null);
+//		Estudiante estudiante2 = new Estudiante(111, "44556677G","Marcos", 'M', LocalDate.now(), 187, null, null);
+//		Estudiante estudiante3 = new Estudiante(111, "44556677G","Lorcas", 'M', LocalDate.now(), 187, null, null);
+//		Estudiante[] estudiantesLista = {estudiante1, estudiante2, estudiante3};
 		
+		int[] un = {1,5,7,9};
+		int[] dos = {3,4,6,5,1};
+		
+		
+		//practicas.ordenaEstudiantes(estudiantesLista);
+		//practicas.mezclaArrays(un, dos);
+		
+		practicas.obtenerClasificacion(new Datos().getResultados(), new Datos().getEquipos());
+		practicas.obtenerLetra("12344321");
 		System.out.println("fin");
 		
 

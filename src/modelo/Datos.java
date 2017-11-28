@@ -4,6 +4,13 @@ public class Datos {
 	private  String[] diasSemana = { "lunes", "martes", "miercoles", "jueves", "viernes", "sábado", "domingo" };
     private Estudiante[] estudiantes;
     private   int numEstudiantes = 30;
+    private String[] equipos = {"RMA", "BCN", "SEV", "VIL"};
+    private String[][] resultados = {
+			{null, "1-4", "4-8", "7-0"},
+			{"2-0", null, "2-4", "1-0"},
+			{"3-0", "2-6", null, "2-3"},
+			{"4-6", "1-9", "3-1", null},
+	};
 	// Declarar propiedad private,un array  de Estudiantes
 	// crea getter/setter
 	// en el constructor de esta clase, INICIALIZAR dicho array 
@@ -37,6 +44,22 @@ public class Datos {
 
 	public  void setDiasSemana(String[] diasSemana) {
 		diasSemana = diasSemana;
+	}
+
+	public String[] getEquipos() {
+		return equipos;
+	}
+
+	public void setEquipos(String[] equipos) {
+		this.equipos = equipos;
+	}
+
+	public String[][] getResultados() {
+		return resultados;
+	}
+
+	public void setResultados(String[][] resultados) {
+		this.resultados = resultados;
 	}
 
 }

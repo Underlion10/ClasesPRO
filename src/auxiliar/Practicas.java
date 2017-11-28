@@ -10,6 +10,106 @@ public class Practicas {
 	// "jueves", "viernes", "sábado", "domingo" };
 
 	// ORDENACION
+
+	public int[] obtenerClasificacion(String[][] resultados, String[] equipos) {
+		int[] puntos = new int[equipos.length];
+		for (int i = 0; i < resultados.length; i++) 
+			for (int j = 0; j < resultados[i].length; j++) 
+				if (i != j) {
+					String[] resultado = resultados[i][j].split("-");
+					int golesLocal = Integer.parseInt(resultado[0]);
+					int golesVisitante = Integer.parseInt(resultado[1]);
+					if (golesLocal > golesVisitante)
+						puntos[i] += 3;
+
+					if (golesLocal < golesVisitante)
+						puntos[j] += 3;
+
+					if (golesLocal == golesVisitante) {
+						puntos[i] += 1;
+						puntos[j] += 1;
+					}
+				}
+		
+		ordenarEquipos(puntos, equipos);
+		
+		for (int i = 0; i < puntos.length; i++) 
+			System.out.println(i + 1 + "º " + equipos[i] + " " + puntos[i]);
+		
+		return puntos;
+	}
+	
+	private void ordenarEquipos(int[] puntos, String[] equipos) {
+		for (int i = 0; i < puntos.length; i++)
+			for (int j = i + 1; j < puntos.length - 1; j++)
+				if (puntos[i] < puntos[j]) {
+					int aux = puntos[i];
+					String aux1 = equipos[i];
+					puntos[i] = puntos[j];
+					puntos[j] = aux;
+					equipos[i] = equipos[j];
+					equipos[j] = aux1;
+				}
+	}
+	
+	
+
+	public char obtenerLetra(String dni) {
+		char[] letra = { 'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H',
+				'L', 'C', 'K', 'E' };
+		int numeroDNI = 0;
+		try {
+			numeroDNI = Integer.parseInt(dni);
+		} catch (NumberFormatException e) { 
+			System.out.println("Numero Incorecto");
+			return ' ';
+		}
+		
+		int letraN = numeroDNI % 23;
+		if(dni.length() == 8)
+			for (int i = 0; i < letra.length; i++)
+				if (letraN == i) {
+					System.out.println(letra[i]);
+					return letra[i];
+				}
+
+		return ' ';
+	}
+
+	public void mezclaArrays(int[] numero1, int[] numero2) {
+		ordenaEnteros(numero1);
+		ordenaEnteros(numero2);
+
+		int[] resultado = new int[numero1.length + numero2.length];
+
+		int i = 0;
+		int j = 0;
+		int k = 0;
+
+		while (i != numero1.length && j != numero2.length) {
+			if (j == numero2.length - 1) {
+				resultado[k++] = numero1[i++];
+				continue;
+			}
+			if (i == numero1.length - 1) {
+				resultado[k++] = numero2[j++];
+				continue;
+			}
+
+			if (numero1[i] < numero2[j])
+				resultado[k] = numero1[i++];
+			else
+				resultado[k] = numero2[j++];
+			k++;
+
+		}
+
+		for (int k2 = 0; k2 < resultado.length; k2++) {
+			System.out.println(resultado[k2]);
+		}
+
+	}
+
 	public void ordenaEnteros(int[] numeros) {
 		for (int i = 0; i < numeros.length - 1; i++)
 			for (int j = i + 1; j < numeros.length; j++)
@@ -23,27 +123,28 @@ public class Practicas {
 	public void ordenaCadenas(String[] cadenas) {
 		for (int i = 0; i < cadenas.length - 1; i++)
 			for (int j = i + 1; j < cadenas.length; j++)
-				if (cadenas[i].compareTo(cadenas[j])>0) {
+				if (cadenas[i].compareTo(cadenas[j]) > 0) {
 					String aux = cadenas[i];
 					cadenas[i] = cadenas[j];
 					cadenas[j] = aux;
 				}
-		
-		
+
 	}
-	
-	public void ordenaEstudiantes(Estudiante[] estudiantes){
-		//Ejemplo uso interface comparable, debe implementarse el metodo compareTo
+
+	public void ordenaEstudiantes(Estudiante[] estudiantes) {
+		// Ejemplo uso interface comparable, debe implementarse el metodo compareTo
 		for (int i = 0; i < estudiantes.length - 1; i++)
 			for (int j = i + 1; j < estudiantes.length; j++)
-				if (estudiantes[i].compareTo(estudiantes[j])>0) {
+				if (estudiantes[i].compareTo(estudiantes[j]) > 0) {
 					Estudiante aux = estudiantes[i];
 					estudiantes[i] = estudiantes[j];
 					estudiantes[j] = aux;
 				}
-		
+
 	}
-	
+
+	// FIN ORDENACION
+
 	public float calculaSaldo(float saldoInicial, float[] movimientos) {
 		float saldoFinal = saldoInicial;
 		for (int i = 0; i < movimientos.length; i++)
@@ -117,7 +218,7 @@ public class Practicas {
 
 		for (int i = 0; i < cuantos; i++)
 			System.out.println(inferior + (int) (Math.random() * (superior - inferior + 1)));
-			
+
 	}
 
 	public void generaAleatorios2(int cuantos, int inferior, int superior) // max 30, min 10
