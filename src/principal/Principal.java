@@ -91,8 +91,11 @@ public class Principal {
 		//practicas.ordenaEstudiantes(estudiantesLista);
 		//practicas.mezclaArrays(un, dos);
 		
-		practicas.obtenerClasificacion(new Datos().getResultados(), new Datos().getEquipos());
-		practicas.obtenerLetra("12344321");
+		Datos dato = new Datos();
+		practicas.obtenerClasificacionJornada(dato.getEquiposLiga());
+		
+		//practicas.obtenerClasificacion2(new Datos().getResultados(), new Datos().getEquipos());
+		//practicas.obtenerLetra("12344321");
 		System.out.println("fin");
 		
 

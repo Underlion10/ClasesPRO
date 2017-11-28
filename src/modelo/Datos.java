@@ -11,6 +11,23 @@ public class Datos {
 			{"3-0", "2-6", null, "2-3"},
 			{"4-6", "1-9", "3-1", null},
 	};
+    
+    public static int[][] puntosJornada = {
+    		{3,0,0,3},
+    		{1,0,3,1},
+    		{1,3,1,0},
+    		{1,1,1,1},
+    		{3,1,1,3},
+    		{0,0,3,3},
+    };
+    
+    Equipo RMA = new Equipo("Real Madrid");
+	Equipo BCN = new Equipo("FC Barcelona");
+	Equipo SEV = new Equipo("Sevilla FC");
+	Equipo VIL = new Equipo("Villareal FC");
+	
+	private Equipo[] equiposLiga = {RMA,BCN,SEV,VIL};
+
 	// Declarar propiedad private,un array  de Estudiantes
 	// crea getter/setter
 	// en el constructor de esta clase, INICIALIZAR dicho array 
@@ -62,4 +79,7 @@ public class Datos {
 		this.resultados = resultados;
 	}
 
+	public Equipo[] getEquiposLiga() {
+		return equiposLiga;
+	}
 }

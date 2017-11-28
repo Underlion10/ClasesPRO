@@ -3,6 +3,7 @@ package auxiliar;
 import java.util.Random;
 
 import modelo.Datos;
+import modelo.Equipo;
 import modelo.Estudiante;
 
 public class Practicas {
@@ -10,6 +11,38 @@ public class Practicas {
 	// "jueves", "viernes", "sábado", "domingo" };
 
 	// ORDENACION
+	
+	
+	
+	
+	
+	
+	public void obtenerClasificacionJornada(Equipo[] equipos) {
+		for (int i = 0; i < Datos.puntosJornada[0].length; i++) { //Recorremos por columnas
+			for (int j = 0; j < Datos.puntosJornada.length; j++) {
+				equipos[i].setPuntos(equipos[i].getPuntos() + Datos.puntosJornada[j][i]);
+			}
+		}
+		
+		ordenarArrayEquipos(equipos);
+		
+		for (int i = 0; i < equipos.length; i++) {
+			System.out.println(i+1 + "º\t" + equipos[i].getName() + " " + equipos[i].getPuntos());
+		}
+	}
+	
+	private void ordenarArrayEquipos(Equipo[] equipos) {
+		for (int i = 0; i < equipos.length-1; i++) {
+			for (int j = i+1; j < equipos.length; j++) {
+				if(equipos[i].getPuntos() < equipos[j].getPuntos()) {
+					Equipo equipoAux = equipos[i];
+					equipos[i] = equipos[j];
+					equipos[j] = equipoAux;
+				}
+			}
+			
+		}
+	}
 
 	public int[] obtenerClasificacion(String[][] resultados, String[] equipos) {
 		int[] puntos = new int[equipos.length];
@@ -42,7 +75,7 @@ public class Practicas {
 	private void ordenarEquipos(int[] puntos, String[] equipos) {
 		for (int i = 0; i < puntos.length; i++)
 			for (int j = i + 1; j < puntos.length - 1; j++)
-				if (puntos[i] < puntos[j]) {
+				if (puntos[i] < puntos[j]) { 
 					int aux = puntos[i];
 					String aux1 = equipos[i];
 					puntos[i] = puntos[j];
@@ -50,6 +83,34 @@ public class Practicas {
 					equipos[i] = equipos[j];
 					equipos[j] = aux1;
 				}
+	}
+	
+	public int[] obtenerClasificacion2(String[][] resultados, String[] equipos) {
+		int[] puntos = new int[equipos.length];
+		for (int i = 0; i < resultados[0].length; i++) 
+			for (int j = 0; j < resultados.length; j++) 
+				if (i != j) {
+					String[] resultado = resultados[j][i].split("-");
+					int golesLocal = Integer.parseInt(resultado[0]);
+					int golesVisitante = Integer.parseInt(resultado[1]);
+					if (golesLocal > golesVisitante)
+						puntos[j] += 3;
+
+					if (golesLocal < golesVisitante)
+						puntos[i] += 3;
+
+					if (golesLocal == golesVisitante) {
+						puntos[i] += 1;
+						puntos[j] += 1;
+					}
+				}
+		
+		ordenarEquipos(puntos, equipos);
+		
+		for (int i = 0; i < puntos.length; i++) 
+			System.out.println(i + 1 + "º " + equipos[i] + " " + puntos[i]);
+		
+		return puntos;
 	}
 	
 	
