@@ -21,6 +21,18 @@ public class Datos {
     		{0,0,3,3},
     };
     
+    public static int[][] matrizIrregular = {
+    		{3},
+    		{1,0,3,1},
+    		{1,3},
+    };
+    
+    public static Integer[][] matrizIrregular2 = {
+    		{3, null},
+    		{1,0,3,null,1},
+    		{1,3, null},
+    };
+    
     Equipo RMA = new Equipo("Real Madrid");
 	Equipo BCN = new Equipo("FC Barcelona");
 	Equipo SEV = new Equipo("Sevilla FC");

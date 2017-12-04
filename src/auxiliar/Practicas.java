@@ -12,10 +12,97 @@ public class Practicas {
 
 	// ORDENACION
 	
+	public void recorrerMatrizIrregularColumnas(int[][] matriz) {
+		int JMAX = 0;
+		
+		for (int i = 0; i < matriz.length; i++) {
+			if(matriz[i].length > JMAX) {
+				JMAX = matriz[i].length;
+			}
+		}
+			
+			for(int j = 0; j < JMAX; j++) {
+				for(int i = 0; i < matriz.length; i++) {
+					try{
+						System.out.println(matriz[i][j]);
+					} catch(ArrayIndexOutOfBoundsException e) {
+						System.out.println("Fuera de Rango");
+						continue;
+					}
+				}
+			}
+	}
 	
+	public void recorrerMatrizIrregularColumnas(Integer[][] matriz) {
+		int JMAX = 0;
+		
+		for (int i = 0; i < matriz.length; i++) {
+			if(matriz[i].length > JMAX) {
+				JMAX = matriz[i].length;
+			}
+		}
+			
+		for(int j = 0; j < JMAX; j++) {
+			for(int i = 0; i < matriz.length; i++) {
+				try {
+					System.out.println("[" + i + "]"+ "[" + j + "] " + matriz[i][j].toString());
+				} catch(ArrayIndexOutOfBoundsException e) {
+						System.out.println("[" + i + "]"+ "[" + j + "] "+ "Fuera de Rango"); continue;
+				} catch(NullPointerException e) {
+					System.out.println("[" + i + "]"+ "[" + j + "] "+ "NULL"); continue;
+				}
+			}
+		}
+	}
 	
+	public int[] sucesionFibonacci(int cantidad) {
+		int[] fibbo = new int[cantidad];
+		for (int i = 0; i < fibbo.length; i++) {
+			if(i == 0 || i == 1) {
+				fibbo[i] = i;
+			} else {
+				fibbo[i] = fibbo[i-1] + fibbo[i-2];
+			}
+		}
+		return fibbo;
+	}
 	
+	public int[] listaPrimos(int cantidad) {
+		
+		int[] listaPrimos = new int[cantidad];
+		int i = 0;
+		int j = 1;
+		while(i < cantidad) {
+			if(esPrimo(j))
+				listaPrimos[i++] = j;
+				
+			j++;
+		}
+		return listaPrimos;
+	}
 	
+	public int cuentaPalabras(String cadena) {
+		int contador = 0;
+		for(int i = 0; i < cadena.length(); i++) {
+			if(cadena.charAt(i) == ' ') {
+				contador++;
+			}
+		}
+		return contador;
+	}
+	
+	public boolean esPrimo(int numero) {
+		int divisor = 2;
+		while(divisor < numero) {
+			if(numero%divisor == 0) {
+				return false;
+			} else {
+				divisor++;
+			}
+		}
+		return true;
+	}
+
 	
 	public void obtenerClasificacionJornada(Equipo[] equipos) {
 		for (int i = 0; i < Datos.puntosJornada[0].length; i++) { //Recorremos por columnas
@@ -40,7 +127,6 @@ public class Practicas {
 					equipos[j] = equipoAux;
 				}
 			}
-			
 		}
 	}
 

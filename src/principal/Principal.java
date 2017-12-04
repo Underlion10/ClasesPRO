@@ -91,9 +91,15 @@ public class Principal {
 		//practicas.ordenaEstudiantes(estudiantesLista);
 		//practicas.mezclaArrays(un, dos);
 		
-		Datos dato = new Datos();
-		practicas.obtenerClasificacionJornada(dato.getEquiposLiga());
+		//Datos dato = new Datos();
+		//practicas.obtenerClasificacionJornada(dato.getEquiposLiga());
 		
+		int numero = 36927;
+		boolean esPrimo = practicas.esPrimo(numero);
+		int[] numerosPrimos = practicas.listaPrimos(50);
+		int[] sucesion = practicas.sucesionFibonacci(5);
+		
+		practicas.recorrerMatrizIrregularColumnas(Datos.matrizIrregular2);
 		//practicas.obtenerClasificacion2(new Datos().getResultados(), new Datos().getEquipos());
 		//practicas.obtenerLetra("12344321");
 		System.out.println("fin");
